@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+        cache: 'yarn'
+    
+    - name: Install dependencies
+      run: yarn install --immutable
+    
+    - name: Lint
+      run: yarn lint
+    
+    - name: Check TypeScript
+      run: |
+        cd packages/nextjs && yarn check-types
+    
+    - name: Run Hardhat Tests
+      run: |
+        cd packages/hardhat && yarn test
+    
+    - name: Build Frontend
+      run: |
+        cd packages/nextjs && yarn build
+
+  contract-size:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+        cache: 'yarn'
+    
+    - name: Install dependencies
+      run: yarn install --immutable
+    
+    - name: Compile Contracts
+      run: |
+        cd packages/hardhat && yarn compile
+    
+    - name: Check Contract Sizes
+      run: |
+        cd packages/hardhat && yarn hardhat size-contracts

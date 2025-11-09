@@ -1,0 +1,11 @@
+{
+  "buildCommand": "yarn workspace @se-2/nextjs build",
+  "installCommand": "yarn install",
+  "outputDirectory": "packages/nextjs/.next",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/packages/nextjs/$1"
+    }
+  ]
+}

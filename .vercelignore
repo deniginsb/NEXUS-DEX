@@ -1,0 +1,4 @@
+packages/hardhat
+node_modules
+.git
+.yarn/cache

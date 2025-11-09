@@ -17,8 +17,12 @@ type HeaderMenuLink = {
 
 export const menuLinks: HeaderMenuLink[] = [
   {
-    label: "Home",
-    href: "/",
+    label: "Swap",
+    href: "/swap",
+  },
+  {
+    label: "Liquidity",
+    href: "/liquidity",
   },
   {
     label: "Debug Contracts",
@@ -83,11 +87,11 @@ export const Header = () => {
         </details>
         <Link href="/" passHref className="hidden lg:flex items-center gap-2 ml-4 mr-6 shrink-0">
           <div className="flex relative w-10 h-10">
-            <Image alt="SE2 logo" className="cursor-pointer" fill src="/logo.svg" />
+            <Image alt="Nexus DEX logo" className="cursor-pointer" fill src="/logo.svg" />
           </div>
           <div className="flex flex-col">
-            <span className="font-bold leading-tight">Scaffold-ETH</span>
-            <span className="text-xs">Ethereum dev stack</span>
+            <span className="font-bold leading-tight">Nexus DEX</span>
+            <span className="text-xs">Decentralized Exchange</span>
           </div>
         </Link>
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">
@@ -96,7 +100,6 @@ export const Header = () => {
       </div>
       <div className="navbar-end grow mr-4">
         <RainbowKitCustomConnectButton />
-        {isLocalNetwork && <FaucetButton />}
       </div>
     </div>
   );

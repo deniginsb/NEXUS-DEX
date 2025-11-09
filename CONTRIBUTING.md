@@ -1,92 +1,196 @@
-# Welcome to Scaffold-ETH 2 Contributing Guide
+# Contributing to Nexus DEX
 
-Thank you for investing your time in contributing to Scaffold-ETH 2!
+First off, thanks for taking the time to contribute! 🎉
 
-This guide aims to provide an overview of the contribution workflow to help us make the contribution process effective for everyone involved.
+## How Can I Contribute?
 
-## About the Project
+### Reporting Bugs
 
-Scaffold-ETH 2 is a minimal and forkable repo providing builders with a starter kit to build decentralized applications on Ethereum.
+Before creating bug reports, please check existing issues to avoid duplicates. When you create a bug report, include as many details as possible:
 
-Read the [README](README.md) to get an overview of the project.
+- **Use a clear and descriptive title**
+- **Describe the exact steps to reproduce the problem**
+- **Provide specific examples** (transaction hashes, wallet addresses)
+- **Describe the behavior you observed and what you expected**
+- **Include screenshots** if relevant
+- **Note your environment** (browser, OS, wallet extension)
 
-### Vision
+### Suggesting Enhancements
 
-The goal of Scaffold-ETH 2 is to provide the primary building blocks for a decentralized application.
+Enhancement suggestions are tracked as GitHub issues. When creating an enhancement suggestion:
 
-The repo can be forked to include integrations and more features, but we want to keep the `main` branch simple and minimal.
-
-### Project Status
-
-The project is under active development.
-
-You can view the open Issues, follow the development process, and contribute to the project.
-
-### Rules
-
-1. All code contributions require an Issue to be created and agreed upon by core contributors before submitting a Pull Request. This ensures proper discussion, alignment, and consensus on the proposed changes.
-2. Contributors must be humans, not bots.
-3. First-time contributions must not contain only spelling or grammatical fixes.
-
-## Getting started
-
-You can contribute to this repo in many ways:
-
-- Solve open issues
-- Report bugs or feature requests
-- Improve the documentation
-
-Contributions are made via Issues and Pull Requests (PRs). A few general guidelines for contributions:
-
-- Search for existing Issues and PRs before creating your own.
-- Contributions should only fix/add the functionality in the issue OR address style issues, not both.
-- If you're running into an error, please give context. Explain what you're trying to do and how to reproduce the error.
-- Please use the same formatting in the code repository. You can configure your IDE to do it by using the prettier / linting config files included in each package.
-- If applicable, please edit the README.md file to reflect the changes.
-
-### Issues
-
-Issues should be used to report problems, request a new feature, or discuss potential changes before a PR is created.
-
-#### Solve an issue
-
-Scan through our [existing issues](https://github.com/scaffold-eth/scaffold-eth-2/issues) to find one that interests you.
-
-If a contributor is working on the issue, they will be assigned to the individual. If you find an issue to work on, you are welcome to assign it to yourself and open a PR with a fix for it.
-
-#### Create a new issue
-
-If a related issue doesn't exist, you can open a new issue.
-
-Some tips to follow when you are creating an issue:
-
-- Provide as much context as possible. Over-communicate to give the most details to the reader.
-- Include the steps to reproduce the issue or the reason for adding the feature.
-- Screenshots, videos, etc., are highly appreciated.
+- **Use a clear and descriptive title**
+- **Provide a detailed description** of the proposed functionality
+- **Explain why this enhancement would be useful**
+- **List any similar features** in other DEXs
 
 ### Pull Requests
 
-#### Pull Request Process
+1. Fork the repo and create your branch from `main`
+2. If you've added code, add tests
+3. If you've changed APIs, update the documentation
+4. Ensure the test suite passes
+5. Make sure your code follows the existing style
+6. Issue that pull request!
 
-We follow the ["fork-and-pull" Git workflow](https://github.com/susam/gitpr)
+## Development Process
 
-1. Fork the repo
-2. Clone the project
-3. Create a new branch with a descriptive name
-4. Commit your changes to the new branch
-5. Push changes to your fork
-6. Open a PR in our repository and tag one of the maintainers to review your PR
+### Setup Development Environment
 
-Here are some tips for a high-quality pull request:
+```bash
+git clone https://github.com/yourusername/nexus-dex.git
+cd nexus-dex
+yarn install
+```
 
-- Create a title for the PR that accurately defines the work done.
-- Structure the description neatly to make it easy to consume by the readers. For example, you can include bullet points and screenshots instead of having one large paragraph.
-- Add the link to the issue if applicable.
-- Have a good commit message that summarises the work done.
+### Run Tests
 
-Once you submit your PR:
+```bash
+# Smart contract tests
+cd packages/hardhat
+yarn test
 
-- We may ask questions, request additional information, or ask for changes to be made before a PR can be merged. Please note that these are to make the PR clear for everyone involved and aim to create a frictionless interaction process.
-- As you update your PR and apply changes, mark each conversation resolved.
+# Frontend tests
+cd packages/nextjs
+yarn test
+```
 
-Once the PR is approved, we'll "squash-and-merge" to keep the git commit history clean.
+### Code Style
+
+- **TypeScript**: Follow existing patterns
+- **Solidity**: Follow [Solidity Style Guide](https://docs.soliditylang.org/en/latest/style-guide.html)
+- **Formatting**: Run `yarn format` before committing
+- **Linting**: Run `yarn lint` and fix all errors
+
+### Commit Messages
+
+Follow [Conventional Commits](https://www.conventionalcommits.org/):
+
+```
+feat: add new token to registry
+fix: resolve swap calculation bug
+docs: update deployment guide
+style: format code with prettier
+refactor: simplify token registry logic
+test: add tests for swap contract
+chore: update dependencies
+```
+
+### Branch Naming
+
+- `feature/description` - New features
+- `fix/description` - Bug fixes
+- `docs/description` - Documentation updates
+- `refactor/description` - Code refactoring
+
+## Smart Contract Guidelines
+
+### Security First
+
+- Use OpenZeppelin contracts when possible
+- Follow checks-effects-interactions pattern
+- Add comprehensive tests for edge cases
+- Document all external functions
+- Consider reentrancy attacks
+
+### Gas Optimization
+
+- Minimize storage reads/writes
+- Use `calldata` for function parameters when possible
+- Batch operations when feasible
+- Cache storage variables in memory
+
+### Testing Requirements
+
+All smart contract changes must include:
+
+1. Unit tests for new functions
+2. Integration tests for contract interactions
+3. Edge case testing
+4. Gas usage reporting
+
+Example test structure:
+
+```typescript
+describe("StablecoinSwap", function () {
+  describe("swapNEXToToken", function () {
+    it("should mint correct amount of tokens", async function () {
+      // Test implementation
+    });
+    
+    it("should revert if insufficient NEX sent", async function () {
+      // Test implementation
+    });
+  });
+});
+```
+
+## Frontend Guidelines
+
+### Component Structure
+
+- Use functional components with hooks
+- Keep components small and focused
+- Extract reusable logic into custom hooks
+- Use TypeScript for all new code
+
+### State Management
+
+- Use React hooks for local state
+- Wagmi hooks for blockchain data
+- Keep state as close to where it's used as possible
+
+### Styling
+
+- Use Tailwind CSS utility classes
+- Follow DaisyUI component patterns
+- Ensure responsive design (mobile-first)
+- Test on multiple browsers
+
+## Documentation
+
+### Update These When Changing Code
+
+- README.md - For user-facing changes
+- ARCHITECTURE.md - For design changes
+- DEPLOYMENT.md - For deployment process changes
+- Inline code comments - For complex logic
+
+### Documentation Style
+
+- Write for beginners, not experts
+- Include code examples
+- Add screenshots for UI changes
+- Keep it concise but complete
+
+## Community
+
+### Code of Conduct
+
+- Be respectful and inclusive
+- Welcome newcomers
+- Accept constructive criticism
+- Focus on what's best for the community
+
+### Getting Help
+
+- Check [Documentation](./docs)
+- Search existing [Issues](https://github.com/yourusername/nexus-dex/issues)
+- Ask in discussions
+- Join our Discord (if available)
+
+## Recognition
+
+Contributors will be:
+- Listed in README.md
+- Credited in release notes
+- Given contributor badge on GitHub
+
+## License
+
+By contributing, you agree that your contributions will be licensed under the MIT License.
+
+---
+
+Thank you for contributing to Nexus DEX! 🚀
+

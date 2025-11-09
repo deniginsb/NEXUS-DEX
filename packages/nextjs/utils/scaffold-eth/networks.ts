@@ -90,6 +90,10 @@ export const NETWORKS_EXTRA_DATA: Record<string, ChainAttributes> = {
   [chains.celoSepolia.id]: {
     color: "#476520",
   },
+  // Custom Nexus Testnet3 configuration
+  "3945": {
+    color: "#8b5cf6",
+  },
 };
 
 /**
@@ -108,7 +112,12 @@ export function getBlockExplorerTxLink(chainId: number, txnHash: string) {
   }
 
   const targetChain = targetChainArr[0] as keyof typeof chains;
-  const blockExplorerTxURL = chains[targetChain]?.blockExplorers?.default?.url;
+  let blockExplorerTxURL = chains[targetChain]?.blockExplorers?.default?.url;
+
+  // Override for Nexus Testnet3
+  if (chainId === 3945) {
+    blockExplorerTxURL = "https://nexus.testnet.blockscout.com/";
+  }
 
   if (!blockExplorerTxURL) {
     return "";
@@ -122,7 +131,13 @@ export function getBlockExplorerTxLink(chainId: number, txnHash: string) {
  * Defaults to Etherscan if no (wagmi) block explorer is configured for the network.
  */
 export function getBlockExplorerAddressLink(network: chains.Chain, address: string) {
-  const blockExplorerBaseURL = network.blockExplorers?.default?.url;
+  let blockExplorerBaseURL = network.blockExplorers?.default?.url;
+  
+  // Override for Nexus Testnet3
+  if (network.id === 3945) {
+    blockExplorerBaseURL = "https://nexus.testnet.blockscout.com/";
+  }
+
   if (network.id === chains.hardhat.id) {
     return `/blockexplorer/address/${address}`;
   }

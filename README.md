@@ -1,88 +1,248 @@
-# 🏗 Scaffold-ETH 2
+# Nexus DEX 🚀
 
-<h4 align="center">
-  <a href="https://docs.scaffoldeth.io">Documentation</a> |
-  <a href="https://scaffoldeth.io">Website</a>
-</h4>
+A modern decentralized exchange (DEX) built on Nexus Layer 1 blockchain. Trade 26+ crypto assets with fixed exchange rates backed by NEX tokens.
 
-🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
+![Nexus DEX](https://img.shields.io/badge/Nexus-DEX-8b5cf6?style=for-the-badge)
+![Solidity](https://img.shields.io/badge/Solidity-0.8.20-363636?style=for-the-badge&logo=solidity)
+![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-⚙️ Built using NextJS, RainbowKit, Foundry/Hardhat, Wagmi, Viem, and Typescript.
+## 🌟 Features
 
-- ✅ **Contract Hot Reload**: Your frontend auto-adapts to your smart contract as you edit it.
-- 🪝 **[Custom hooks](https://docs.scaffoldeth.io/hooks/)**: Collection of React hooks wrapper around [wagmi](https://wagmi.sh/) to simplify interactions with smart contracts with typescript autocompletion.
-- 🧱 [**Components**](https://docs.scaffoldeth.io/components/): Collection of common web3 components to quickly build your frontend.
-- 🔥 **Burner Wallet & Local Faucet**: Quickly test your application with a burner wallet and local faucet.
-- 🔐 **Integration with Wallet Providers**: Connect to different wallet providers and interact with the Ethereum network.
+- **26 Supported Tokens** - Trade NEX, WNEX, and 24 popular cryptocurrencies (BTC, ETH, SOL, BNB, and more)
+- **Stablecoin System** - All tokens backed by NEX with fixed exchange rates
+- **Zero Slippage** - Fixed rates based on real-world USD prices
+- **Instant Swaps** - Mint/burn mechanism provides instant liquidity
+- **Low Fees** - Pay only gas fees, no platform fees
+- **Open Source** - Fully auditable smart contracts
 
-![Debug Contracts tab](https://github.com/scaffold-eth/scaffold-eth-2/assets/55535804/b237af0c-5027-4849-a5c1-2e31495cccb1)
+## 🎯 Live Demo
 
-## Requirements
+**Live App:** [https://nexus-dex.vercel.app](https://nexus-dex.vercel.app)  
+**Testnet Explorer:** [https://nexus.testnet.blockscout.com](https://nexus.testnet.blockscout.com/)
 
-Before you begin, you need to install the following tools:
+## 🚀 Quick Start
 
-- [Node (>= v20.18.3)](https://nodejs.org/en/download/)
-- Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
-- [Git](https://git-scm.com/downloads)
+```bash
+# Clone repository
+git clone https://github.com/yourusername/nexus-dex.git
+cd nexus-dex
 
-## Quickstart
+# Install dependencies
+yarn install
 
-To get started with Scaffold-ETH 2, follow the steps below:
-
-1. Install the latest version of Scaffold-ETH 2
-
-```
-npx create-eth@latest
-```
-
-This command will install all the necessary packages and dependencies, so it might take a while.
-
-> [!NOTE]
-> You can also initialize your project with one of our extensions to add specific features or starter-kits. Learn more in our [extensions documentation](https://docs.scaffoldeth.io/extensions/).
-
-2. Run a local network in the first terminal:
-
-```
+# Start local blockchain (terminal 1)
 yarn chain
-```
 
-This command starts a local Ethereum network that runs on your local machine and can be used for testing and development. Learn how to [customize your network configuration](https://docs.scaffoldeth.io/quick-start/environment#1-initialize-a-local-blockchain).
-
-3. On a second terminal, deploy the test contract:
-
-```
+# Deploy contracts (terminal 2)
 yarn deploy
-```
 
-This command deploys a test smart contract to the local network. You can find more information about how to customize your contract and deployment script in our [documentation](https://docs.scaffoldeth.io/quick-start/environment#2-deploy-your-smart-contract).
-
-4. On a third terminal, start your NextJS app:
-
-```
+# Start frontend (terminal 3)
 yarn start
 ```
 
-Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
+Visit `http://localhost:3000` and start swapping! 
 
-**What's next**:
+[📖 Detailed Quick Start Guide →](./QUICKSTART.md)
 
-Visit the [What's next section of our docs](https://docs.scaffoldeth.io/quick-start/environment#whats-next) to learn how to:
+## 🏗️ Architecture
 
-- Edit your smart contracts
-- Edit your deployment scripts
-- Customize your frontend
-- Edit the app config
-- Writing and running tests
-- [Setting up external services and API keys](https://docs.scaffoldeth.io/deploying/deploy-smart-contracts#configuration-of-third-party-services-for-production-grade-apps)
+```
+┌─────────────┐         ┌──────────────────┐         ┌─────────────┐
+│   Frontend  │────────▶│  Smart Contracts │────────▶│  Nexus L1   │
+│  (Next.js)  │         │  (Solidity 0.8)  │         │  Blockchain │
+└─────────────┘         └──────────────────┘         └─────────────┘
+      │                          │
+      │                          ├── StablecoinSwap
+      │                          ├── StablecoinToken (x22)
+      │                          ├── NativeNEXSwapV2
+      │                          └── WNEX, NEXA, NEXB
+      │
+      └── RainbowKit + Wagmi + Viem
+```
 
-## Documentation
+## 💱 Supported Tokens
 
-Visit our [docs](https://docs.scaffoldeth.io) to learn all the technical details and guides of Scaffold-ETH 2.
+| Token | Symbol | Exchange Rate | Type |
+|-------|--------|---------------|------|
+| Nexus Token | NEX | Base ($1) | Native |
+| Wrapped NEX | WNEX | 1 NEX | Wrapped |
+| Bitcoin | BTC | 60,000 NEX | Stablecoin |
+| Ethereum | ETH | 3,400 NEX | Stablecoin |
+| Solana | SOL | 150 NEX | Stablecoin |
+| Binance Coin | BNB | 600 NEX | Stablecoin |
+| Aave | AAVE | 100 NEX | Stablecoin |
+| Litecoin | LTC | 80 NEX | Stablecoin |
+| Avalanche | AVAX | 40 NEX | Stablecoin |
+| Chainlink | LINK | 15 NEX | Stablecoin |
+| Cosmos | ATOM | 10 NEX | Stablecoin |
+| Uniswap | UNI | 8 NEX | Stablecoin |
+| Polkadot | DOT | 7 NEX | Stablecoin |
+| NEAR | NEAR | 4 NEX | Stablecoin |
+| Tether | USDT | 1 NEX | Stablecoin |
+| USD Coin | USDC | 1 NEX | Stablecoin |
+| ... and 10 more | | | |
 
-To know more about its features, check out our [website](https://scaffoldeth.io).
+[📝 View all 26 tokens and contract addresses →](./docs/CONTRACTS.md)
 
-## Contributing to Scaffold-ETH 2
+## 🔧 Technology Stack
 
-We welcome contributions to Scaffold-ETH 2!
+### Smart Contracts
+- **Solidity 0.8.20** - Smart contract language
+- **Hardhat** - Development environment
+- **OpenZeppelin** - Secure contract libraries
+- **Ethers.js v6** - Ethereum interactions
 
-Please see [CONTRIBUTING.MD](https://github.com/scaffold-eth/scaffold-eth-2/blob/main/CONTRIBUTING.md) for more information and guidelines for contributing to Scaffold-ETH 2.
+### Frontend
+- **Next.js 15** - React framework (App Router)
+- **TypeScript** - Type safety
+- **Tailwind CSS + DaisyUI** - Styling
+- **RainbowKit** - Wallet connection
+- **Wagmi + Viem** - Web3 interactions
+
+### Blockchain
+- **Nexus L1 Testnet3**
+- **Chain ID:** 3945
+- **RPC:** https://testnet.rpc.nexus.xyz
+- **Explorer:** https://nexus.testnet.blockscout.com/
+
+## 📝 Smart Contracts
+
+### Main Contracts (Nexus Testnet3)
+
+| Contract | Address | Purpose |
+|----------|---------|---------|
+| StablecoinSwap | `0x51253E3Cf94CBcABA852EbC2C2c420e687FEeC99` | Main swap router |
+| NativeNEXSwapV2 | `0x48A3399B5D0630A746075167a944736d9112C458` | NEX/WNEX swaps |
+| WNEX | `0x5A6128e1cF97339cD9C057a940950c02DbeA0B7B` | Wrapped NEX token |
+
+[🔍 View all deployed contracts →](./docs/CONTRACTS.md)
+
+## 🔐 How It Works
+
+### Mint/Burn Mechanism
+
+Each stablecoin is backed 1:1 by NEX tokens using a mint/burn system:
+
+**Buying tokens (Minting):**
+```
+Send 150 NEX → Receive 1 SOL token
+Send 60,000 NEX → Receive 1 BTC token
+```
+
+**Selling tokens (Burning):**
+```
+Burn 1 SOL token → Receive 150 NEX
+Burn 1 BTC token → Receive 60,000 NEX
+```
+
+**Benefits:**
+- ✅ Zero slippage
+- ✅ Infinite liquidity (as long as contract has NEX)
+- ✅ No impermanent loss
+- ✅ Fixed, predictable rates
+
+### Security Features
+
+- ✅ **OpenZeppelin standards** - Battle-tested ERC20 implementation
+- ✅ **Owner-controlled minting** - Only StablecoinSwap can mint tokens
+- ✅ **Fixed exchange rates** - No oracle manipulation risk
+- ✅ **No proxy pattern** - Immutable contract logic
+- ✅ **Event logging** - Full transaction transparency
+
+## 📚 Documentation
+
+- [📖 Quick Start Guide](./QUICKSTART.md) - Get started in 5 minutes
+- [🏗️ Architecture Overview](./docs/ARCHITECTURE.md) - System design and data flow
+- [📝 Smart Contract Docs](./docs/CONTRACTS.md) - All deployed contracts and addresses
+- [🚀 Deployment Guide](./docs/DEPLOYMENT.md) - Deploy your own instance
+- [🤝 Contributing Guide](./CONTRIBUTING.md) - How to contribute
+
+## 🧪 Testing
+
+```bash
+# Run smart contract tests
+yarn hardhat:test
+
+# Check TypeScript types
+yarn next:check-types
+
+# Lint code
+yarn lint
+```
+
+## 🚢 Deployment
+
+### Deploy Smart Contracts
+
+```bash
+# Deploy to Nexus Testnet
+yarn deploy --network nexus
+
+# Verify contracts on Blockscout
+yarn hardhat:verify --network nexus
+```
+
+### Deploy Frontend to Vercel
+
+```bash
+# Build and deploy
+cd packages/nextjs
+yarn vercel --prod
+```
+
+[📖 Full deployment guide →](./docs/DEPLOYMENT.md)
+
+## 🤝 Contributing
+
+Contributions are welcome! Please read our [Contributing Guide](./CONTRIBUTING.md) before submitting PRs.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+Built with amazing open-source tools:
+
+- [Scaffold-ETH 2](https://scaffoldeth.io/) - Ethereum development stack
+- [Nexus L1 Blockchain](https://nexus.xyz/) - Fast and scalable L1
+- [OpenZeppelin](https://www.openzeppelin.com/) - Secure smart contract libraries
+- [RainbowKit](https://www.rainbowkit.com/) - Beautiful wallet connection
+- [Wagmi](https://wagmi.sh/) - React hooks for Ethereum
+- [Viem](https://viem.sh/) - TypeScript Ethereum library
+
+## ⚠️ Disclaimer
+
+**This DEX is deployed on Nexus Testnet3 for demonstration purposes.**
+
+- ⚠️ Do not use real funds
+- ⚠️ Contracts are NOT audited
+- ⚠️ Use at your own risk
+- ⚠️ Always DYOR (Do Your Own Research)
+
+For production use, please get a professional security audit.
+
+## 📞 Links
+
+- **Live App:** https://nexus-dex.vercel.app
+- **Explorer:** https://nexus.testnet.blockscout.com/
+- **Documentation:** [./docs](./docs)
+- **Issues:** [GitHub Issues](https://github.com/yourusername/nexus-dex/issues)
+
+---
+
+<div align="center">
+  <p><strong>Built with ❤️ for the Nexus ecosystem</strong></p>
+  <p>
+    <a href="https://nexus-dex.vercel.app">Website</a> •
+    <a href="./docs">Documentation</a> •
+    <a href="https://nexus.testnet.blockscout.com/">Explorer</a>
+  </p>
+</div>
