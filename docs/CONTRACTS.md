@@ -35,4 +35,4 @@ Base ERC20 contract for all stablecoins with fixed `priceInNEX`.
 3. **Fixed Rates**: No slippage, no oracles
 
 ---
-Last updated: 2025-01-09
+Last updated: 2025-11-10
