@@ -281,10 +281,8 @@ Owner (Deployer)
 ### Phase 2
 - [ ] Add liquidity pools for token-to-token swaps
 - [ ] Implement dynamic pricing with oracles
-- [ ] Multi-chain deployment (Polygon, BSC)
 
 ### Phase 3
-- [ ] Governance token (NEXDEX)
 - [ ] Staking rewards
 - [ ] Flash loan support
 
@@ -295,5 +293,5 @@ Owner (Deployer)
 
 ---
 
-Last updated: 2025-01-09
+Last updated: 2025-11-10
 
