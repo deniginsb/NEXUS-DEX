@@ -231,7 +231,7 @@ For production use, please get a professional security audit.
 
 ## 📞 Links
 
-- **Live App:** https://nexus-dex.vercel.app
+- **Live App:** https://www.nexus-dex.web.id/
 - **Explorer:** https://nexus.testnet.blockscout.com/
 - **Documentation:** [./docs](./docs)
 - **Issues:** [GitHub Issues](https://github.com/yourusername/nexus-dex/issues)
@@ -241,7 +241,7 @@ For production use, please get a professional security audit.
 <div align="center">
   <p><strong>Built with ❤️ for the Nexus ecosystem</strong></p>
   <p>
-    <a href="https://nexus-dex.vercel.app">Website</a> •
+    <a href="https://www.nexus-dex.web.id/">Website</a> •
     <a href="./docs">Documentation</a> •
     <a href="https://nexus.testnet.blockscout.com/">Explorer</a>
   </p>
