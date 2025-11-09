@@ -223,7 +223,6 @@ Built with amazing open-source tools:
 **This DEX is deployed on Nexus Testnet3 for demonstration purposes.**
 
 - ⚠️ Do not use real funds
-- ⚠️ Contracts are NOT audited
 - ⚠️ Use at your own risk
 - ⚠️ Always DYOR (Do Your Own Research)
 
