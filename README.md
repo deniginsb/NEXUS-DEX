@@ -233,7 +233,7 @@ For production use, please get a professional security audit.
 - **Live App:** https://nexus-dex.web.id/
 - **Explorer:** https://nexus.testnet.blockscout.com/
 - **Documentation:** [./docs](./docs)
-- **Issues:** [GitHub Issues](https://github.com/yourusername/nexus-dex/issues)
+- **Issues:** [GitHub Issues](https://github.com/deniginsb/NEXUS-DEX/issues)
 
 ---
 
