@@ -4,7 +4,7 @@ A decentralized exchange interface built for Nexus Testnet. This project provide
 
 ## Live Demo
 
-**Production:** [https://nexus-dex.vercel.app](https://web-gx72dyzfs-deniardis-projects-abe78544.vercel.app)
+**Production:** [Nexus DEX](https://www.nexus-dex.web.id/)
 
 ## Overview
 
