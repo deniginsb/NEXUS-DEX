@@ -1,247 +1,123 @@
-# Nexus DEX 🚀
+# Nexus DEX
 
-A modern decentralized exchange (DEX) built on Nexus Layer 1 blockchain. Trade 26+ crypto assets with fixed exchange rates backed by NEX tokens.
+A decentralized exchange interface built for Nexus Testnet. This project provides a modern, user-friendly trading experience with support for token swaps, liquidity pools, and position management.
 
-![Nexus DEX](https://img.shields.io/badge/Nexus-DEX-8b5cf6?style=for-the-badge)
-![Solidity](https://img.shields.io/badge/Solidity-0.8.20-363636?style=for-the-badge&logo=solidity)
-![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+## Live Demo
 
-## 🌟 Features
+**Production:** [https://nexus-dex.vercel.app](https://web-gx72dyzfs-deniardis-projects-abe78544.vercel.app)
 
-- **26 Supported Tokens** - Trade NEX, WNEX, and 24 popular cryptocurrencies (BTC, ETH, SOL, BNB, and more)
-- **Stablecoin System** - All tokens backed by NEX with fixed exchange rates
-- **Zero Slippage** - Fixed rates based on real-world USD prices
-- **Instant Swaps** - Mint/burn mechanism provides instant liquidity
-- **Low Fees** - Pay only gas fees, no platform fees
-- **Open Source** - Fully auditable smart contracts
+## Overview
 
-## 🎯 Live Demo
+Nexus DEX is a frontend interface that connects to Uniswap V3 smart contracts deployed on Nexus Testnet (Chain ID: 3945). The interface has been customized with Nexus branding and optimized for the Nexus blockchain ecosystem.
 
-**Live App:** [https://nexus-dex.web.id/](https://nexus-dex.web.id/)  
-**Testnet Explorer:** [https://nexus.testnet.blockscout.com](https://nexus.testnet.blockscout.com/)
+## Features
 
-## 🚀 Quick Start
+- **Token Swap** - Exchange tokens with real-time price quotes from on-chain QuoterV2
+- **Wrap/Unwrap** - Convert native NEX to WNEX and vice versa
+- **Liquidity Pools** - Create and manage V3 liquidity positions
+- **Position Management** - View, increase, or remove liquidity from existing positions
+- **Multi-language Support** - Available in 15+ languages including English and Indonesian
+- **Mobile Responsive** - Works on desktop browsers and mobile dApp browsers (MetaMask, OKX)
 
-```bash
-# Clone repository
-git clone https://github.com/yourusername/nexus-dex.git
-cd nexus-dex
+## Tech Stack
 
-# Install dependencies
-yarn install
+- React 18
+- TypeScript
+- Vite
+- Redux Toolkit
+- Ethers.js
+- Tamagui (UI Components)
+- React Query
 
-# Start local blockchain (terminal 1)
-yarn chain
+## Network Configuration
 
-# Deploy contracts (terminal 2)
-yarn deploy
+| Property | Value |
+|----------|-------|
+| Network Name | Nexus Testnet |
+| Chain ID | 3945 |
+| RPC URL | https://rpc.nexus.testnet.rollup.cc |
+| Block Explorer | https://explorer.nexus.testnet.rollup.cc |
+| Native Token | NEX |
 
-# Start frontend (terminal 3)
-yarn start
+## Core Contracts
+
+All contracts are deployed on Nexus Testnet:
+
+| Contract | Address |
+|----------|---------|
+| SwapRouter | `0xf96e9bf8fddf64534f9ed45a0696d02f490d0197` |
+| QuoterV2 | `0x6878b5c4564f61f2d1b4d336853a211f0e0cfa11` |
+| NonfungiblePositionManager | `0x643770e279d5d0733f21d6dc03a8efbabeb3e21e` |
+| WNEX (Wrapped NEX) | `0x11cbb81b69f6a7024ace3c83a14eb87e8c540879` |
+| USDC | `0x8586bac6d1d34df58bad5a7aceb95cc7a9e02552` |
+
+## Project Structure
+
+```
+Nexus-DEX/
+├── src/
+│   ├── components/       # UI component examples
+│   ├── config/          # Chain and token configuration
+│   └── assets/          # Logo and brand assets
+├── screenshots/         # Interface screenshots
+├── README.md
+└── LICENSE
 ```
 
-Visit `http://localhost:3000` and start swapping! 
+## Screenshots
 
-[📖 Detailed Quick Start Guide →](./QUICKSTART.md)
+### Landing Page
+![Landing Page](screenshots/01-landing-page.jpg)
 
-## 🏗️ Architecture
+### Swap / Wrap Interface
+![Swap Interface](screenshots/02-swap-wrap.jpg)
 
-```
-┌─────────────┐         ┌──────────────────┐         ┌─────────────┐
-│   Frontend  │────────▶│  Smart Contracts │────────▶│  Nexus L1   │
-│  (Next.js)  │         │  (Solidity 0.8)  │         │  Blockchain │
-└─────────────┘         └──────────────────┘         └─────────────┘
-      │                          │
-      │                          ├── StablecoinSwap
-      │                          ├── StablecoinToken (x22)
-      │                          ├── NativeNEXSwapV2
-      │                          └── WNEX, NEXA, NEXB
-      │
-      └── RainbowKit + Wagmi + Viem
-```
+### Token Selector
+![Token Selector](screenshots/03-token-selector.jpg)
 
-## 💱 Supported Tokens
+### Positions Page
+![Positions](screenshots/04-positions-page.png)
 
-| Token | Symbol | Exchange Rate | Type |
-|-------|--------|---------------|------|
-| Nexus Token | NEX | Base ($1) | Native |
-| Wrapped NEX | WNEX | 1 NEX | Wrapped |
-| Bitcoin | BTC | 60,000 NEX | Stablecoin |
-| Ethereum | ETH | 3,400 NEX | Stablecoin |
-| Solana | SOL | 150 NEX | Stablecoin |
-| Binance Coin | BNB | 600 NEX | Stablecoin |
-| Aave | AAVE | 100 NEX | Stablecoin |
-| Litecoin | LTC | 80 NEX | Stablecoin |
-| Avalanche | AVAX | 40 NEX | Stablecoin |
-| Chainlink | LINK | 15 NEX | Stablecoin |
-| Cosmos | ATOM | 10 NEX | Stablecoin |
-| Uniswap | UNI | 8 NEX | Stablecoin |
-| Polkadot | DOT | 7 NEX | Stablecoin |
-| NEAR | NEAR | 4 NEX | Stablecoin |
-| Tether | USDT | 1 NEX | Stablecoin |
-| USD Coin | USDC | 1 NEX | Stablecoin |
-| ... and 10 more | | | |
+## Key Customizations
 
-[📝 View all 26 tokens and contract addresses →](./docs/CONTRACTS.md)
+1. **Chain Integration** - Native support for Nexus Testnet with proper RPC configuration
+2. **Token Registry** - Pre-configured common tokens (NEX, WNEX, USDC)
+3. **Branding** - Custom logo, colors, and naming throughout the interface
+4. **Localization** - Updated translations for Nexus DEX branding
 
-## 🔧 Technology Stack
+## Development Notes
 
-### Smart Contracts
-- **Solidity 0.8.20** - Smart contract language
-- **Hardhat** - Development environment
-- **OpenZeppelin** - Secure contract libraries
-- **Ethers.js v6** - Ethereum interactions
+This is a showcase repository containing selected components and configurations from the full project. The complete working version is deployed at the demo link above.
 
-### Frontend
-- **Next.js 15** - React framework (App Router)
-- **TypeScript** - Type safety
-- **Tailwind CSS + DaisyUI** - Styling
-- **RainbowKit** - Wallet connection
-- **Wagmi + Viem** - Web3 interactions
+Key files that were modified from the base Uniswap interface:
+- Chain configuration for Nexus Testnet
+- Token definitions and addresses
+- Swap service for on-chain quotes via QuoterV2
+- UI branding and translations
 
-### Blockchain
-- **Nexus L1 Testnet3**
-- **Chain ID:** 3945
-- **RPC:** https://testnet.rpc.nexus.xyz
-- **Explorer:** https://nexus.testnet.blockscout.com/
+## Building Your Own
 
-## 📝 Smart Contracts
+If you want to deploy a similar DEX on your own network:
 
-### Main Contracts (Nexus Testnet3)
+1. Deploy Uniswap V3 contracts to your chain
+2. Configure chain info (RPC, chain ID, explorer)
+3. Set up wrapped native token address
+4. Add your token registry
+5. Update branding assets and translations
 
-| Contract | Address | Purpose |
-|----------|---------|---------|
-| StablecoinSwap | `0x51253E3Cf94CBcABA852EbC2C2c420e687FEeC99` | Main swap router |
-| NativeNEXSwapV2 | `0x48A3399B5D0630A746075167a944736d9112C458` | NEX/WNEX swaps |
-| WNEX | `0x5A6128e1cF97339cD9C057a940950c02DbeA0B7B` | Wrapped NEX token |
+## Contributing
 
-[🔍 View all deployed contracts →](./docs/CONTRACTS.md)
+Contributions are welcome. Feel free to open issues or submit pull requests.
 
-## 🔐 How It Works
+## Author
 
-### Mint/Burn Mechanism
+**Deni**
+- X (Twitter): [@DBzhx7955](https://x.com/DBzhx7955)
 
-Each stablecoin is backed 1:1 by NEX tokens using a mint/burn system:
+## License
 
-**Buying tokens (Minting):**
-```
-Send 150 NEX → Receive 1 SOL token
-Send 60,000 NEX → Receive 1 BTC token
-```
+MIT License - see [LICENSE](LICENSE) for details.
 
-**Selling tokens (Burning):**
-```
-Burn 1 SOL token → Receive 150 NEX
-Burn 1 BTC token → Receive 60,000 NEX
-```
+## Disclaimer
 
-**Benefits:**
-- ✅ Zero slippage
-- ✅ Infinite liquidity (as long as contract has NEX)
-- ✅ No impermanent loss
-- ✅ Fixed, predictable rates
-
-### Security Features
-
-- ✅ **OpenZeppelin standards** - Battle-tested ERC20 implementation
-- ✅ **Owner-controlled minting** - Only StablecoinSwap can mint tokens
-- ✅ **Fixed exchange rates** - No oracle manipulation risk
-- ✅ **No proxy pattern** - Immutable contract logic
-- ✅ **Event logging** - Full transaction transparency
-
-## 📚 Documentation
-
-- [📖 Quick Start Guide](./QUICKSTART.md) - Get started in 5 minutes
-- [🏗️ Architecture Overview](./docs/ARCHITECTURE.md) - System design and data flow
-- [📝 Smart Contract Docs](./docs/CONTRACTS.md) - All deployed contracts and addresses
-- [🚀 Deployment Guide](./docs/DEPLOYMENT.md) - Deploy your own instance
-- [🤝 Contributing Guide](./CONTRIBUTING.md) - How to contribute
-
-## 🧪 Testing
-
-```bash
-# Run smart contract tests
-yarn hardhat:test
-
-# Check TypeScript types
-yarn next:check-types
-
-# Lint code
-yarn lint
-```
-
-## 🚢 Deployment
-
-### Deploy Smart Contracts
-
-```bash
-# Deploy to Nexus Testnet
-yarn deploy --network nexus
-
-# Verify contracts on Blockscout
-yarn hardhat:verify --network nexus
-```
-
-### Deploy Frontend to Vercel
-
-```bash
-# Build and deploy
-cd packages/nextjs
-yarn vercel --prod
-```
-
-[📖 Full deployment guide →](./docs/DEPLOYMENT.md)
-
-## 🤝 Contributing
-
-Contributions are welcome! Please read our [Contributing Guide](./CONTRIBUTING.md) before submitting PRs.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-Built with amazing open-source tools:
-
-- [Scaffold-ETH 2](https://scaffoldeth.io/) - Ethereum development stack
-- [Nexus L1 Blockchain](https://nexus.xyz/) - Fast and scalable L1
-- [OpenZeppelin](https://www.openzeppelin.com/) - Secure smart contract libraries
-- [RainbowKit](https://www.rainbowkit.com/) - Beautiful wallet connection
-- [Wagmi](https://wagmi.sh/) - React hooks for Ethereum
-- [Viem](https://viem.sh/) - TypeScript Ethereum library
-
-## ⚠️ Disclaimer
-
-**This DEX is deployed on Nexus Testnet3 for demonstration purposes.**
-
-- ⚠️ Do not use real funds
-- ⚠️ Use at your own risk
-- ⚠️ Always DYOR (Do Your Own Research)
-
-For production use, please get a professional security audit.
-
-## 📞 Links
-
-- **Live App:** https://nexus-dex.web.id/
-- **Explorer:** https://nexus.testnet.blockscout.com/
-- **Documentation:** [./docs](./docs)
-- **Issues:** [GitHub Issues](https://github.com/deniginsb/NEXUS-DEX/issues)
-
----
-
-<div align="center">
-  <p><strong>Built with ❤️ for the Nexus ecosystem</strong></p>
-  <p>
-    <a href="https://nexus-dex.web.id/">Website</a> •
-    <a href="./docs">Documentation</a> •
-    <a href="https://nexus.testnet.blockscout.com/">Explorer</a>
-  </p>
-</div>
+This software is provided "as is" without warranty of any kind. Use at your own risk. This is a testnet application and should not be used with real funds.
